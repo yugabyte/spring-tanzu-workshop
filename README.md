@@ -15,7 +15,7 @@ as a backing transactional database. Session includes presentations and hands-on
  Microservice         | YugabyteDB API | Spring Projects | Description           |
 | -------------------- | ---------------- | ---------------- | --------------------- |
 | [Product Catalog](https://github.com/yugabyte/spring-tanzu-workshop/tree/master/product-catalog-microservice) | YCQL | Spring Web, Spring Data Cassandra | This microservice serves the product catalog information. It uses Spring Data Cassandra repositories for querying the product catalog information stored in YugabyteDB YCQL Table.
-| [Checkout](https://github.com/yugabyte/spring-tanzu-workshop/tree/master/checkout-microservice) | YCQL | Spring Web, Spring Data JPA | This microservice handles the product checkout functionality. It uses Spring Data JPA repositories for transactional commit into YugabyteDB YSQL Tables.
+| [Checkout](https://github.com/yugabyte/spring-tanzu-workshop/tree/master/checkout-microservice) | YSQL | Spring Web, Spring Data JPA | This microservice handles the product checkout functionality. It uses Spring Data JPA repositories for transactional commit into YugabyteDB YSQL Tables.
 
 
 ## Agenda
