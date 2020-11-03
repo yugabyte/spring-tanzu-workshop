@@ -2,7 +2,7 @@
 
 ### What will we build in this workshop?
 
-In this workshop, we'll look at how to build data-driven microservices apps using Spring Boot and Yugabyte Distributed SQL database. This will be focused on building a Retail Catalog lookup application use-case which is a low-latency, resilient, and HA lookup web-service. It will be a two hours hands-on session where developers will get started with developing the Product Catalog and Checkout microservices using familar spring modules like Spring Web, Spring Data Cassandra and Spring Data JPA. YugabyteDB cluster access will be provided to all the participants via options like Yugabyte Cloud or Yugabyte cluster deployed on the customer environment. 
+In this workshop, we'll look at how to build data-driven microservices apps using Spring Boot and Yugabyte Distributed SQL database. This will be focused on building a Retail Catalog lookup application use-case which is a low-latency, resilient, and HA lookup web-service. It will be a two hours hands-on session where developers will get started with developing the Product Catalog and Cart microservices using familar spring modules like Spring Web, Spring Data Cassandra and Spring Data JPA. YugabyteDB cluster access will be provided to all the participants via options like Yugabyte Cloud or Yugabyte cluster deployed on the customer environment. 
 
 Session includes walk through of YugabyteDB concepts for app developers, slide deck and hands-on labs.
 
@@ -30,7 +30,7 @@ Session includes walk through of YugabyteDB concepts for app developers, slide d
 - Implementing Product Catalog Microservice using Yugabyte CQL API (NOSQL)
 
 
-- Implementing Checkout Microservice using Yugabyte SQL API (RDBMS)
+- Implementing Cart Microservice using Yugabyte SQL API (RDBMS)
 
 
 - Putting it all together on Tanzu environment
