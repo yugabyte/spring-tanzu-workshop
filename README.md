@@ -1,119 +1,55 @@
-# Implementing Spring Boot app with Yugabyte DB
+# Spring Developer Workshop for YugabyteDB and VMware Tanzu Kubernetes Grid (TKG)
 
-This repository walks you the steps of building a simple REST API server using Spring Boot and Spring Data JPA ORM on top of Yugabyte DB (using the YSQL API). The scenario modelled is that of a simple online e-commerce store. It consists of the following.
+This workshop will provide developers with hands on experience in building Spring Boot applications 
+with YugabyteDB database. In this session we'll be implementing a Retail catalog lookup application 
+use-case which is a low-latency, resilient and HA lookup web-service. This is a hands-on session 
+where developers will incrementally develop Product catalog and Checkout microservice using YugabyteDB 
+as a backing transactional database. Session includes presentations and hands-on labs.
 
-* The users of the ecommerce site are stored in the `users` table. 
-* The `products` table contains a list of products the ecommerce site sells.
-* The orders placed by the users are populated in the `orders` table. An order can consist of multiple line items, each of these are inserted in the `orderline` table.
+
+## Retail Catalog Lookup application
+
+![Architecture of Retail Catalog Lookup application](images/retail-catalog-app.png)
 
 
-# Prerequisites
+ Microservice         | YugabyteDB API | Spring Projects | Description           |
+| -------------------- | ---------------- | ---------------- | --------------------- |
+| [Product Catalog](https://github.com/yugabyte/spring-tanzu-workshop/tree/master/product-catalog-microservice) | YCQL | Spring Web, Spring Data Cassandra | This microservice serves the product catalog information. It uses Spring Data Cassandra repositories for querying the product catalog information stored in YugabyteDB YCQL Table.
+| [Checkout](https://github.com/yugabyte/spring-tanzu-workshop/tree/master/checkout-microservice) | YCQL | Spring Web, Spring Data JPA | This microservice handles the product checkout functionality. It uses Spring Data JPA repositories for transactional commit into YugabyteDB YSQL Tables.
 
-* [Docker Desktop](https://www.docker.com/products/docker-desktop) Installed on your workstation
-* Java 8
-* IDE of your choice
 
-# APIs
+## Agenda
 
-## Create a user
+- YugabyteDB Fundamentals
 
-You can create a user named `John Smith` and email `jsmith@yb.com` as follows:
 
-```
-$ curl --data '{ "firstName" : "John", "lastName" : "Smith", "email" : "jsmith@yb.com" }' \
-       -v -X POST -H 'Content-Type:application/json' http://localhost:8080/users
-```
+- Deploying YugabyteDB on Tanzu Kubernetes Grid (TKG)
 
-This will return the inserted record as a JSON document:
-```
-{
-  "userId": "1",
-  "firstName": "John",
-  "lastName": "Smith",
-  "email": "jsmith@yb.com"
-}
-```
 
-You can connect to YugaByte DB using `psql` and select these records:
-```
-postgres=# select * from users;
- user_id | first_name | last_name |  user_email
----------+------------+-----------+---------------
-       1 | John       | Smith     | jsmith@yb.com(1 row)
-```
+- Implementing Product Catalog Microservice using Yugabyte CQL API (NOSQL)
 
-## List all users
 
-You can list the current set of users by running the following:
-```
-$ curl http://localhost:8080/users
-```
+- Implementing Checkout Microservice using Yugabyte SQL API (RDBMS)
 
-You should see the following output:
-```
-{
-  "content": [
-    {
-      "userId":"1",
-      "email":"jsmith@yb.com",
-      "firstName":"John",
-      "lastName":"Smith"
-    }
-  ],
-  ...
-}
-```
 
-## Create a product
+- Putting it all together on TKG
 
-You can create a product listing as follows:
-```
-$ curl \
-  --data '{ "productName": "Notebook", "description": "200 page notebook", "price": 7.50 }' \
-  -v -X POST -H 'Content-Type:application/json' http://localhost:8080/products
-```
+## Prerequisites
 
-You should see the following return value:
-```
-{
-  "productId": "1",
-  "productName": "Notebook",
-  "description": "200 page, hardbound, blank notebook",
-  "price": 7.5}
-```
+- Basic understanding of Spring Data and Spring Boot
+- Basical familiarity 
+- Familiarity with running basic Linux commands from a command prompt
+- IDE of choice
 
-## List all products
+## Technical Requirements
 
-You can do this as follows:
-```
-$ curl http://localhost:8080/products
-```
+- Java 1.8 installed
+- GitHub account
+- Maven installed
+- Docker desktop installed
+- Internet access - ability to access sites via port 80 and 443 (HTTPS)
 
-You should see an output as follows:
-```
-{
-  "content":[
-    {
-      "productId": "1",
-      "productName": "Notebook","description":"200 page, hardbound, blank notebook",
-      "price": 7.5
-    }
-  ],
-  ...
-}
-```
 
-## Create an order
 
-Creating an order involves a user id ordering a particular product, this can be achieved as follows:
-```
-$ curl \
-  --data '{ "userId": "1", "products": [ { "productId": 1, "units": 2 } ] }' \
-  -v -X POST -H 'Content-Type:application/json' http://localhost:8080/orders
-```
 
-Note that you can check out multiple products in one order. As an example, the following POST payload makes one user (id=1) checkout two products (id=1 and id=2) by creating the following payload:
 
-```
-{ "userId": "1", "products": [ { "productId": 1, "units": 2 }, { "productId": 2, "units": 4 } ] }
-```
