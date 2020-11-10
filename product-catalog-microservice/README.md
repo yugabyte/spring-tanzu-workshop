@@ -23,7 +23,7 @@ $ cd resources
 $ ./dataload.sh
 ```
 
-# Build and run
+# Build and Run on Local Workstation
 
 ## Build Jars with Maven 
 To build, simply run the following from the base directory:
