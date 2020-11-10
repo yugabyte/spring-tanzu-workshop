@@ -12,8 +12,7 @@ $ export YSQLSH_PORT=32517
 b. Now create the necessary tables as shown below. 
 
 ```
-$ cd resources
-$ ysqlsh -h $YSQLSH_HOST -p $YSQLSH_PORT -d postgres -f schema.sql
+$ ysqlsh -h $YSQLSH_HOST -p $YSQLSH_PORT -d postgres -f database-setup/schema.sql
 ```
 
 ## Build Jars with Maven 

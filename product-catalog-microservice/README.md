@@ -12,14 +12,13 @@ $ export CQLSH_PORT=31620
 b. Now create the necessary tables as shown below. 
 
 ```
-$ cd resources
-$ ycqlsh -f schema.cql
+$ ycqlsh -f database-setup/schema.cql
 ```
 
 C. Load sample dataset for Product catalog. 
 
 ```
-$ cd resources
+$ cd database-setup
 $ ./dataload.sh
 ```
 
