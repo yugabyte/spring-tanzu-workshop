@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.yugabyte.app.yugastore.cart.domain.ShoppingCart;
-import com.yugabyte.app.yugastore.cart.domain.ShoppingCartKey;
 import com.yugabyte.app.yugastore.cart.repositories.ShoppingCartRepository;
 
 @Service
@@ -37,13 +36,12 @@ public class ShoppingCartImpl {
 	 */
 	public void addProductToShoppingCart(String userId, String asin) {
 
-		ShoppingCartKey currentKey = new ShoppingCartKey(userId, asin);
 		String shoppingCartKeyStr = userId + "-" + asin;
 		if (shoppingCartRepository.findById(shoppingCartKeyStr).isPresent()) {
 			shoppingCartRepository.updateQuantityForShoppingCart(userId, asin);
 			System.out.println("Adding product: " + asin);
 		} else {
-			ShoppingCart currentShoppingCart = createCartObject(currentKey);
+			ShoppingCart currentShoppingCart = createCartObject(userId, asin);
 			shoppingCartRepository.save(currentShoppingCart);
 			System.out.println("Adding product: " + asin);
 		}
@@ -77,11 +75,11 @@ public class ShoppingCartImpl {
 		}
 	}
 
-	private ShoppingCart createCartObject(ShoppingCartKey currentKey) {
+	private ShoppingCart createCartObject(String userId, String asin) {
 		ShoppingCart currentShoppingCart = new ShoppingCart();
-		currentShoppingCart.setCartKey(currentKey.getId() + "-" + currentKey.getAsin());
-		currentShoppingCart.setUserId(currentKey.getId());
-		currentShoppingCart.setAsin(currentKey.getAsin());
+		currentShoppingCart.setCartKey(userId + "-" + asin);
+		currentShoppingCart.setUserId(userId);
+		currentShoppingCart.setAsin(asin);
 		LocalDateTime currentTime = LocalDateTime.now();
 		currentShoppingCart.setTime_added(currentTime.toString());
 		currentShoppingCart.setQuantity(DEFAULT_QUANTITY);
