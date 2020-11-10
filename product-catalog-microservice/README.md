@@ -13,7 +13,7 @@ b. Now create the necessary tables as shown below.
 
 ```
 $ cd resources
-$ cqlsh -f schema.cql
+$ ycqlsh -f schema.cql
 ```
 
 C. Load sample dataset for Product catalog. 
@@ -29,7 +29,7 @@ $ ./dataload.sh
 To build, simply run the following from the base directory:
 
 ```
-$ mvn -DskipTests package
+$ mvn -DskipTests clean package
 ```
 
 ## Run the app on local workstation
@@ -53,13 +53,13 @@ http://localhost:8082/swagger-ui/index.html#/
 To get started quickly, you can run Jib without even changing your pom.xml:
 
 ```
-$ ./mvnw com.google.cloud.tools:jib-maven-plugin:dockerBuild -Dimage=nchandrappa/cart-microservice
+$ ./mvnw com.google.cloud.tools:jib-maven-plugin:dockerBuild -Dimage=nchandrappa/product-catalog-microservice
 ```
 
 To push to a Docker registry you use the build goal, instead of dockerBuild, i.e.
 
 ```
-$ ./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=nchandrappa/cart-microservice
+$ ./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=nchandrappa/product-catalog-microservice
 ```
 
 Note: Update docker image id to reflect the docker repository of your choice.
