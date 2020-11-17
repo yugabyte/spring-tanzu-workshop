@@ -3,8 +3,7 @@
 This microservice handles the shopping cart functionality. It uses Spring Data JPA repositories for transactional commit 
 into YugabyteDB YSQL Tables.
 
-Let's incrementally build the Spring Boot app for simulating Shopping Cart API using Spring Data JPA and YugabyteDB.
-
+Let's incrementally build the Spring Boot app by following the labs 01 through 06.
 
 ## Prerequisites
 
