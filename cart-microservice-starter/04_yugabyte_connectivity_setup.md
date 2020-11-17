@@ -27,7 +27,7 @@ spring.datasource.platform=postgres
 yugabyte.sql.datasource.url=jdbc:postgresql://127.0.0.1:5433/postgres
 spring.datasource.username=yugabyte
 spring.datasource.password=
-
+```
 
 #### Step 2: Create a new package `com.yugabyte.app.yugastore.cart.config` and create configuration class `YugabyteDataSourceConfig`
 
