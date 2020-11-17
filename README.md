@@ -1,4 +1,4 @@
-# Spring Developer Workshop for YugabyteDB and VMware Tanzu
+# YugabyteDB Spring Developer Workshop for VMware Tanzu
 
 ### What will we build in this workshop?
 
@@ -38,9 +38,9 @@ Session includes walk through of YugabyteDB concepts for app developers, slide d
 ## Prerequisites
 
 - Basic understanding of Spring Data and Spring Boot
-- Basical familiarity 
-- Familiarity with running basic Linux commands from a command prompt
-- IDE of choice
+- Basic familiarity with YugabyteDB fundamentals - https://docs.yugabyte.com/latest/explore/
+- Familiarity with running Linux commands and bash CLI
+- IDE of choice - Eclipse or IntelliJ or SpringSource Toolkit preferred
 
 ## Technical Requirements
 
