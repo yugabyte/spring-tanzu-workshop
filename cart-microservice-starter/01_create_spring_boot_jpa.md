@@ -1,6 +1,6 @@
 # Spring Boot App using Yugabyte YSQL API
 
-Let's incrementally build our the Spring Boot app for simulating ecommerce API using Spring Data JPA and YugabyteDB.
+Let's incrementally build our the Spring Boot app for simulating shopping cart API using Spring Data JPA and YugabyteDB.
 
 
 ## Option 1: Use Starter project 
