@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cart-microservice-v2-properties
+data:
+  yugabyte.sql.datasource.url: jdbc:postgresql://yb-tservers.yb-dev-yugastore-spring-2.svc.cluster.local:5433/postgres
+  logging.level.com.yugabyte.ysql. : DEBUG
