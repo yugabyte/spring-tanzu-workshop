@@ -2,7 +2,7 @@
 
 #### Step 1: Configure JPA connectivity with YugabyteDB Cluster using `application.properties`
 
-Spring Boot automagically creates the Postgres Datasource and connection objects for us and we will only need to specify the application properties to configure our Data source. We'll add the follow properties in our Spring Boot app's `application.properties` file.
+Spring Boot automagically creates the Postgres Datasource and connection objects for us and we will only need to specify the application properties to configure our Data source. We'll add the following properties in our Spring Boot app's `application.properties` file.
 
 ```
 # Application port.
